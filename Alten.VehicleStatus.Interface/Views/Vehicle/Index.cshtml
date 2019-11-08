@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string servicePath = Url.Content("~/JS/Services/Vehicle/vehicle-service.js");
+    string showallControllerPath = Url.Content("~/JS/Controllers/Vehicle/Vehicle-showall-controller.js");
+    string controllerPath = Url.Content("~/JS/Controllers/Vehicle/Vehicle-controller.js");
+
+}
+@section Scripts
+{
+    <script src="@showallControllerPath"></script>
+    <script src="@servicePath"></script>    
+    <script src="@controllerPath"></script>
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <h2>Vehicles</h2>
+    <div>
+        <div class="container" ng-app="App">
+            <ui-view name="all"></ui-view>          
+            <ui-view name="vehicle"></ui-view>
+        </div>
+    </div>
+</body>
+</html>

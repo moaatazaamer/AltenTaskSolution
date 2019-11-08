@@ -1,0 +1,33 @@
+﻿<div controller="customerController" ng-init="init()" ng-form="individualcustomer" >
+    
+    <div class="container" ng-show="!customer.IsHidden">
+        <div class="row">
+            <div class="col-lg-2">
+                <span class="pull-right" ng-click="removeImage()" style="cursor:pointer">X</span>
+                <center>
+                    <img src="{{imgURL}}"
+                         style="width:100px; height:100px; border-radius:50%; border-style:none" id="img_PP" />
+                </center>
+                <div>
+                    <input type="file" id="file_ProfilePic"
+                           onchange="angular.element(this).scope().previewImage()" name="profilePic" accept="image/*" />
+                </div>
+            </div>
+            <div class="col-lg-2"><input type="text" ng-model="customer.Name" placeholder="name" required /></div>
+            <div class="col-lg-2"><input type="text" ng-model="customer.Title" placeholder="title" /></div>
+            <div class="col-lg-2"><input type="text" ng-model="customer.Email" placeholder="email" /></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <a ui-sref="home" ng-click="goBack()" style="cursor:pointer">Back To Home</a>
+            </div>
+            <div class="col-lg-6">
+                <input class="btn btn-default" type="button" value="Submit" ng-click="addCustomer($event)" />
+            </div>
+        </div>
+    </div>
+    <div ng-show="customer.IsHidden">
+        <center><img src="../../../Content/loading-2.gif" /></center>
+    </div>
+</div>

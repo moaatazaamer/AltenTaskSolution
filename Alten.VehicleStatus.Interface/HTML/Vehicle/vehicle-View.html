@@ -1,0 +1,25 @@
+﻿<div controller="vehicleController" ng-init="init()" ng-form="individualVehicle">
+    <h2>Vehicle Details And Status Simulation</h2>
+    <div class="container" ng-show="!vehicle.IsHidden">
+        <div class="row" ng-if="!vehicle.simStatus" ng-style="vehicle.status=='Connected' && {'color':'lightgreen'}" style="color:red;font:bold"><h3>Status: {{vehicle.status}}</h3></div>
+        <div class="row" ng-if="vehicle.simStatus" style="font:bold;text-decoration:underline"><h3>Status: {{vehicle.simStatus}}</h3></div>
+        <div class="row table-header">
+            <div class="col-md-2">VID</div>
+            <div class="col-md-2">Reg. Nr.</div>
+            <div class="col-md-2">Customer Name</div>
+            <div class="col-md-2">Customer Address</div>
+        </div>
+        <div class="row table-row">
+            <div class="col-md-2">{{vehicle.identifire}}</div>
+            <div class="col-md-2">{{vehicle.regNr}}</div>
+            <div class="col-md-2">{{vehicle.owner.name}}</div>
+            <div class="col-md-2">{{vehicle.owner.address}}</div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <a ui-sref="home" ng-click="goBack()" style="cursor:pointer">Back To Home</a>
+            </div>
+        </div>
+    </div>  
+</div>

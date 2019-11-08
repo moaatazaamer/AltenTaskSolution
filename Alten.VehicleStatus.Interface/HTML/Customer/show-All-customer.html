@@ -1,0 +1,56 @@
+﻿<div class="container" ng-controller="EmployeeShowAllController" ng-init="init()" ng-form="showEmployeeForm">
+    <div class="row ">     
+        <div class="col-lg-3">
+            <li><a ui-sref="emp" style="cursor:pointer">Add New Employee</a></li>
+        </div>        
+    </div>
+    <div ng-if="Application" ng-show="!Application.IsHidden">
+       
+        <br />
+        <div class="row table">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+                Name
+            </div>
+            <div class="col-lg-2">
+                Title
+            </div>
+            <div class="col-lg-2">
+                Email
+            </div>
+            <div class="col-lg-2">
+                Details
+            </div>
+        </div>
+        <div class="row" ng-repeat="customer in Application" style="padding-top:5px;">
+            <div class="col-lg-2">
+                <img style="width:50px;height:50px"
+                      src="{{commonService.serverPath + '0' + commonService.profilePictureExtension + '?img='+employee.Id+'&size=S'}}" />
+            </div>
+            <div class="col-lg-2">
+                {{customer.Name}}
+            </div>
+            <div class="col-lg-2">
+                {{customer.Title}}
+            </div>
+            <div class="col-lg-2">
+                {{customer.Email}}
+            </div>
+            <div class="col-lg-2">
+                <a ui-sref="emp" ng-click="setCustomer(customer)">View Detials</a>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <span class="btn btn-default" ng-hide="pageNumber==1" ng-click="changePage(pageDirection.first)" style="cursor:pointer">first page</span>
+            <span class="btn btn-default" ng-hide="pageNumber==1" ng-click="changePage(pageDirection.previous)" style="cursor:pointer">previous</span>
+            <span class="btn btn-default">{{pageNumber}}</span>
+            <span class="btn btn-default" ng-hide="pageNumber==endPage" ng-click="changePage(pageDirection.next)" style="cursor:pointer">next</span>
+            <span class="btn btn-default" ng-hide="pageNumber==endPage" ng-click="changePage(pageDirection.last)" style="cursor:pointer">last page</span>
+        </div>
+    </div>
+    <div ng-show="Application.IsHidden">
+        <center><img src="../../../Content/loading-2.gif" /></center>
+    </div>
+</div>
+

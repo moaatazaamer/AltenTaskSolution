@@ -1,0 +1,55 @@
+﻿<div class="container" ng-controller="vehicleShowAllController" ng-init="init()" ng-form="showvehicleForm">
+    <div class="row">     
+        <div class="col-md-6">
+            <input id="txt_Search" class="form-control" type="text" placeholder="Search" aria-label="Search" ng-model="searchquery">
+        </div>
+        
+    </div>
+    <div ng-if="Application" ng-show="!Application.IsHidden">       
+        <br />
+        <div class="row table-header">
+            <div class="col-md-2">
+                VIN
+            </div>
+            <div class="col-md-2">
+                Reg. nr.
+            </div>
+            <div class="col-md-2">
+                Owner
+            </div>
+            <div class="col-md-2">
+                Status
+            </div>
+            <div class="col-md-4">
+                Details
+            </div>
+        </div>
+        <div class="row table-row" ng-style="vehicle.status!='Connected' && {'background-color':'lightpink'}" ng-repeat="vehicle in Application | filter : searchquery">
+            <div class="col-md-2">
+                {{vehicle.identifire}}
+            </div>
+            <div class="col-md-2">
+                {{vehicle.regNr}}
+            </div>
+            <div class="col-md-2">
+                {{vehicle.owner.name}}
+            </div>
+            <div class="col-md-2" ng-style="vehicle.status=='Connected' && {'color':'darkgreen'}">
+                {{vehicle.status}}
+            </div>
+            <div class="col-md-4">
+                <a ui-sref="vehicles" ng-click="setvehicle(vehicle)">View Details</a>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <span class="btn btn-default" ng-hide="pageNumber==1" ng-click="" style="cursor:pointer">first page</span>
+            <span class="btn btn-default" ng-hide="pageNumber==1" ng-click="" style="cursor:pointer">previous</span>
+            <span class="btn btn-default">{{pageNumber}}</span>
+            <span class="btn btn-default" ng-hide="pageNumber==endPage" ng-click="" style="cursor:pointer">next</span>
+            <span class="btn btn-default" ng-hide="pageNumber==endPage" ng-click="" style="cursor:pointer">last page</span>
+        </div>
+    </div>  
+    
+</div>
+
